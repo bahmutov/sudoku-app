@@ -15,7 +15,11 @@
     "predeploy": "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cy:open": "cypress open",
+    "cy:e2e": "cypress open --e2e --browser electron",
+    "dev": "start-server-and-test 3000 cy:open",
+    "e2e": "start-server-and-test 3000 cy:e2e"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +38,7 @@
   },
   "devDependencies": {
     "cypress": "^10.0.3",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "start-server-and-test": "^1.14.0"
   }
 }
