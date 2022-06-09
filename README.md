@@ -1,4 +1,4 @@
-# sudoku-app
+# sudoku-app [![CI](https://github.com/bahmutov/sudoku-app/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/sudoku-app/actions/workflows/ci.yml)
 
 > E2E and React component testing using Cypress v10
 
