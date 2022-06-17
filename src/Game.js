@@ -6,6 +6,7 @@ import { StatusSection } from './components/layout/StatusSection'
 import { Overlay } from './components/Overlay'
 import { getUniqueSudoku } from './solver/UniqueSudoku'
 import { useSudokuContext } from './context/SudokuContext'
+import { useWinContext } from './context/WinContext'
 
 /**
  * Game is the main React component.
@@ -40,8 +41,9 @@ export const Game = () => {
     setCellSelected,
     initArray,
     setInitArray,
-    setWon,
   } = useSudokuContext()
+  let { won, setWon } = useWinContext()
+
   let [mistakesMode, setMistakesMode] = useState(false)
   let [history, setHistory] = useState([])
   let [solvedArray, setSolvedArray] = useState([])
