@@ -9,12 +9,12 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       # https://github.com/cypress-io/github-action
-      - name: Cypress run
+      - name: Cypress component tests
         uses: cypress-io/github-action@v4
         with:
           component: true
 
-      - name: Cypress run
+      - name: Cypress e2e tests
         uses: cypress-io/github-action@v4
         with:
           install: false
