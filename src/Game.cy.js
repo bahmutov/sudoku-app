@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 import { Game } from './Game'
 import { SudokuProvider } from './context/SudokuContext'
-import { WinProvider } from './context/WinContext'
+import { WinProvider, WinContext } from './context/WinContext'
 import { starting, solved } from '../cypress/fixtures/sudoku.json'
 
 describe('Game', () => {
@@ -12,11 +12,18 @@ describe('Game', () => {
     window.solved = solved
     cy.mount(
       <SudokuProvider>
-        <WinProvider>
+        <WinContext.Provider
+          value={{
+            won: false,
+            setWon: cy.stub().as('setWon'),
+          }}
+        >
           <Game />
-        </WinProvider>
+        </WinContext.Provider>
       </SudokuProvider>,
     )
+
+    cy.get('@setWon').should('have.been.calledWith', false)
 
     // our initial array only has 3 cells to fill
     cy.get('.game__cell:contains(0)').should('have.length', 3)
@@ -32,5 +39,6 @@ describe('Game', () => {
     })
 
     cy.contains('.overlay__text', 'You solved it').should('be.visible')
+    cy.get('@setWon').should('have.been.calledWith', true)
   })
 })
