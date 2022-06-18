@@ -2,6 +2,7 @@ import React from 'react'
 import { Game } from './Game'
 import './App.css'
 import { SudokuProvider } from './context/SudokuContext'
+import { WinProvider } from './context/WinContext'
 
 /**
  * App is the root React component.
@@ -9,7 +10,9 @@ import { SudokuProvider } from './context/SudokuContext'
 export const App = () => {
   return (
     <SudokuProvider>
-      <Game />
+      <WinProvider>
+        <Game />
+      </WinProvider>
     </SudokuProvider>
   )
 }
