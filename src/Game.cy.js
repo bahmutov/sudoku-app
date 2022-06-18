@@ -7,7 +7,7 @@ import { WinContext } from './context/WinContext'
 import { starting, solved } from '../cypress/fixtures/sudoku.json'
 
 describe('Game', () => {
-  it('sets the win flag', () => {
+  it('sets the won flag', () => {
     const value = {
       won: false,
       setWon: cy.stub().as('setWon'),
