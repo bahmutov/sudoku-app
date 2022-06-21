@@ -3,13 +3,15 @@ import { formatTime } from './Timer'
 
 const useFetch = (url) => {
   const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(url ? true : false)
 
   async function fetchData() {
-    const response = await fetch(url)
-    const json = await response.json()
-    setData(json)
-    setLoading(false)
+    if (url) {
+      const response = await fetch(url)
+      const json = await response.json()
+      setData(json)
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -20,9 +22,9 @@ const useFetch = (url) => {
 }
 
 export const Overlay = (props) => {
-  const { loading, data } = props.time
-    ? useFetch('/times/' + props.time)
-    : { loading: false, data: [] }
+  const { loading, data } = useFetch(
+    props.overlay && props.time ? '/times/' + props.time : null,
+  )
   const className = props.overlay ? 'overlay overlay--visible' : 'overlay'
   return (
     <div className={className} onClick={props.onClickOverlay}>
