@@ -18,6 +18,7 @@
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
     "cy:e2e": "cypress open --e2e --browser electron",
+    "comp": "cypress open --component --browser electron",
     "dev": "start-server-and-test 3000 cy:open",
     "e2e": "start-server-and-test 3000 cy:e2e"
   },

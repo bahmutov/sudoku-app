@@ -5,8 +5,10 @@ export const Overlay = (props) => {
   return (
     <div className={className} onClick={props.onClickOverlay}>
       <h2 className="overlay__text">
-        You <span className="overlay__textspan1">solved</span>{' '}
-        <span className="overlay__textspan2">it!</span>
+        <div className="overlay__greeting">
+          You <span className="overlay__textspan1">solved</span>{' '}
+          <span className="overlay__textspan2">it!</span>
+        </div>
       </h2>
     </div>
   )
