@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { formatTime } from './Timer'
 
 const useFetch = (url) => {
   const [data, setData] = useState([])
@@ -31,6 +32,21 @@ export const Overlay = (props) => {
           <span className="overlay__textspan2">it!</span>
         </div>
         {loading && <div className="overlay__loading">Loading...</div>}
+
+        {data.length > 0 && (
+          <ul className="overlay__times">
+            {data.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  className={item.current ? 'overlay__current' : ''}
+                >
+                  {formatTime(item)}
+                </li>
+              )
+            })}
+          </ul>
+        )}
       </h2>
     </div>
   )

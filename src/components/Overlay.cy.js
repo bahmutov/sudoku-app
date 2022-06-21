@@ -25,4 +25,35 @@ describe('Overlay', () => {
     cy.contains('.overlay__loading', 'Loading').should('be.visible')
     cy.get('.overlay__loading').should('not.exist')
   })
+
+  it('shows the top times', () => {
+    cy.intercept('GET', '/times/90', {
+      body: [
+        {
+          seconds: 50,
+        },
+        {
+          minutes: 1,
+          seconds: 20,
+        },
+        {
+          minutes: 1,
+          seconds: 30,
+          current: true,
+        },
+        {
+          hours: 10,
+          minutes: 1,
+          seconds: 30,
+        },
+      ],
+    }).as('scores')
+    cy.mount(<Overlay overlay={true} time={90} />)
+    cy.wait('@scores')
+    cy.get('.overlay__times li').should('have.length', 4)
+    cy.contains('.overlay__times li', '01:30').should(
+      'have.class',
+      'overlay__current',
+    )
+  })
 })
