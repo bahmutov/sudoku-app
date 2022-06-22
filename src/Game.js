@@ -34,6 +34,7 @@ export const Game = () => {
     setGameArray,
     difficulty,
     setDifficulty,
+    timeGameStarted,
     setTimeGameStarted,
     fastMode,
     setFastMode,
@@ -229,6 +230,10 @@ export const Game = () => {
     _createNewGame()
     // eslint-disable-next-line
   }, [])
+
+  const gameLasted = Math.ceil(
+    moment.duration(moment().diff(timeGameStarted)).asSeconds(),
+  )
 
   return (
     <>

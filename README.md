@@ -23,3 +23,4 @@ Here is a typical presentation showing E2E and component testing
     - show the selected number using provider
 - different viewports and screenshots [StatusSection.cy.js](./src/components/layout/StatusSection.cy.js)
 - run Cypress tests using GitHub Actions [ci.yml](./.github/workflows/ci.yml)
+- maybe timer format unit tests
