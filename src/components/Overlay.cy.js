@@ -28,25 +28,7 @@ describe('Overlay', () => {
 
   it('shows the top times', () => {
     cy.intercept('GET', '/times/90', {
-      body: [
-        {
-          seconds: 50,
-        },
-        {
-          minutes: 1,
-          seconds: 20,
-        },
-        {
-          minutes: 1,
-          seconds: 30,
-          current: true,
-        },
-        {
-          hours: 10,
-          minutes: 1,
-          seconds: 30,
-        },
-      ],
+      fixture: 'times.json',
     }).as('scores')
     cy.mount(<Overlay overlay={true} time={90} />)
     cy.wait('@scores')

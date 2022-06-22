@@ -252,7 +252,11 @@ export const Game = () => {
           />
         </div>
       </div>
-      <Overlay overlay={overlay} onClickOverlay={onClickOverlay} />
+      <Overlay
+        overlay={overlay}
+        onClickOverlay={onClickOverlay}
+        time={gameLasted}
+      />
     </>
   )
 }

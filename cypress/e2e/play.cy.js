@@ -14,6 +14,10 @@ describe('Sudoku', () => {
       },
     })
 
+    cy.intercept('GET', '/times/*', {
+      fixture: 'times.json',
+    }).as('scores')
+
     // our initial array only has 3 cells to fill
     cy.get('.game__cell:contains(0)').should('have.length', 3)
     starting.forEach((cell, index) => {
@@ -28,5 +32,13 @@ describe('Sudoku', () => {
     })
 
     cy.contains('.overlay__text', 'You solved it').should('be.visible')
+    cy.wait('@scores')
+    cy.fixture('times.json')
+      .its('length')
+      .then((n) => {
+        cy.get('.overlay__times li').should('have.length', n)
+      })
+
+    cy.get('.overlay__times li.overlay__current').should('have.length', 1)
   })
 })
