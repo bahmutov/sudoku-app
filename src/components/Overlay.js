@@ -15,8 +15,11 @@ const useFetch = (url) => {
   }
 
   useEffect(() => {
+    if (!url) {
+      return
+    }
     fetchData()
-  }, [])
+  }, [url])
 
   return { loading, data }
 }
