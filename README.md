@@ -4,6 +4,8 @@
 
 ![Sudoku application running locally](./images/app.png)
 
+The example application is used during my [Cypress v10 Fundamentals](https://cypress.tips/courses) free course.
+
 Original Sudoku game copied from [https://github.com/raravi/sudoku](https://github.com/raravi/sudoku) and you can play it at [https://sudoku-raravi.vercel.app/](https://sudoku-raravi.vercel.app/).
 
 ## Presentation
